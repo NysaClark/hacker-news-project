@@ -1,17 +1,52 @@
-import React, { useState, useContext } from 'react';
-// import { useFetch } from './useFetch';
+import React, { useReducer, useContext, useEffect } from 'react';
+import {reducer} from './reducer';
+const API_ENDPOINT = `https://hn.algolia.com/api/v1/search?`;
 
-const StoryContext = React.createContext();
+const initialState = {
+    loading: true,
+    hits: [],
+    nbPages: 0,
+    page:  0,
+    query: "react"
+};
 
-export const StoryProvider = ({children}) => {
-    const [query, setQuery] = useState('idk');
-    const {loading, error, stories} = useFetch(`s=${query}&`);
+const AppContext = React.createContext();
 
-    return <StoryContext.Provider value={{query, setQuery, loading, error, stories}}>
-        {children}
-    </StoryContext.Provider>
-}
+export const AppProvider = ({children}) => {
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-export const useStoryContext = () => {
-    return useContext(StoryContext)
+    const fetchStories = async (url) => {
+        dispatch({type: "SET_LOADING"});
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            dispatch({type: "SET_HITS", payload: data});
+        } catch (error){
+            console.error(error);
+        }
+    };
+
+    // add more dispatches
+    //remove story
+    //change page #
+    // etc
+
+
+    const handleSearch = (query) => {
+        dispatch({type: "HANDLE_SEARCH", payload: query})
+    }
+
+    useEffect(() => {
+        fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
+    }, [state.query, state.page]);
+
+    return (
+        <AppContext.Provider value ={{...state, handleSearch}}>
+            {children}
+        </AppContext.Provider>
+    )
+};
+
+export const useGlobalContext = () => {
+    return useContext(AppContext);
 }
