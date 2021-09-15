@@ -8,11 +8,21 @@ export const reducer = (state, action) => {
             ...state,
             loading: false,
             hits: action.payload.hits,
-            nbpages: action.payload.nbpages,
+            nbPages: action.payload.nbPages,
         }
         case "HANDLE_SEARCH": return {
             ...state,
-            //idk
+            loading: false,
+            query: action.payload,
+        }
+        case "CHANGE_PAGE": return {
+            ...state,
+            loading: false,
+            page: action.payload,
+        }
+        case "REMOVE_STORY": return {
+            ...state,
+            hits: state.hits.filter((hit) => hit.objectID !== action.payload),
         };
         default:
             throw new Error(`No Matching ${action.type} action type`)

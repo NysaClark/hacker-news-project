@@ -31,9 +31,24 @@ export const AppProvider = ({children}) => {
     //change page #
     // etc
 
+    const removeStory = (id) => {
+        dispatch({type: "REMOVE_STORY", payload: id})
+    }
 
     const handleSearch = (query) => {
+        dispatch({type: "SET_LOADING"});
         dispatch({type: "HANDLE_SEARCH", payload: query})
+    }
+
+    const changePage = (page) => {
+        dispatch({type: "SET_LOADING"});
+        if(page >= 0 && page <=49){
+            dispatch({type: "CHANGE_PAGE", payload: page})
+        }else if(page > 49){
+            dispatch({type: "CHANGE_PAGE", payload: 0})
+        }else if (page < 0){
+            dispatch({type: "CHANGE_PAGE", payload: 49})
+        }
     }
 
     useEffect(() => {
@@ -41,7 +56,7 @@ export const AppProvider = ({children}) => {
     }, [state.query, state.page]);
 
     return (
-        <AppContext.Provider value ={{...state, handleSearch}}>
+        <AppContext.Provider value ={{...state, handleSearch, changePage, removeStory}}>
             {children}
         </AppContext.Provider>
     )

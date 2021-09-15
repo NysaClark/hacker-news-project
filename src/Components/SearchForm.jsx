@@ -6,7 +6,7 @@ const SearchForm = () => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className="search-form">
       <h2>search hacker news</h2>
-      <input type="text" className="form-input" value={query} onChange={} />
+      <input type="text" className="form-input" value={query} onChange={(e) => handleSearch(e.target.value)} />
     </form>
   )
 };

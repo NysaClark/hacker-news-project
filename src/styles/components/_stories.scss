@@ -2,4 +2,24 @@
 @use '../util/variables' as *;
 @use '../util/mixins' as *;
 
-.stories{}
+.stories{
+    .loading{
+        text-align: center;
+        .spinner{
+            @include box(5.5rem);
+            @include center-auto;
+            border-radius: 50%;
+            border: 3px solid $grey-9;
+            border-top-color: $primary-4;
+            animation: spinner 0.5s linear infinite;
+            margin-bottom: .5rem;
+        }
+        @keyframes spinner {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    
+}

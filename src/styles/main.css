@@ -256,4 +256,30 @@ input {
   border-radius: 0.25rem;
   letter-spacing: 0.1rem;
   margin-top: 1rem;
+}
+
+.stories .loading {
+  text-align: center;
+}
+.stories .loading .spinner {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: 3px solid #d7e0ea;
+  border-top-color: #6e41c8;
+  -webkit-animation: spinner 0.5s linear infinite;
+          animation: spinner 0.5s linear infinite;
+  margin-bottom: 0.5rem;
+}
+@-webkit-keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=main.css.map */
