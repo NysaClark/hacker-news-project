@@ -10,22 +10,25 @@
     margin-bottom: 3rem;
     .form-input{
         width: 100%;
-        border: transparent;
+        max-width: 600px;
+        border: none;
+        border-bottom: 3px solid $grey-2;
         max-width: $fixed-width;
-        background: $white;
+        background: transparent;
         padding: 1rem;
-        color: $black;
+        color: $grey-1;
+        text-transform: uppercase;
         font-size: 1rem;
         border-radius: $radius;
         letter-spacing: $spacing;
         margin-top: 1rem;
     }
-    // .error{
-    //     color: $red-dark;
-    //     text-transform: capitalize;
-    //     padding-top: 0.3rem;
-    //     letter-spacing: $spacing;
-    //     font-weight: 500;
-    //     font-size: 1.25rem;
-    // }
+}
+
+@include tablet {
+    .search-form{
+        h2{
+            font-size: 2.5rem;
+        }
+    }
 }

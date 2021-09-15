@@ -247,17 +247,25 @@ input {
 }
 .search-form .form-input {
   width: 100%;
-  border: transparent;
+  max-width: 600px;
+  border: none;
+  border-bottom: 3px solid #425e7b;
   max-width: 920px;
-  background: #fff;
+  background: transparent;
   padding: 1rem;
-  color: #222;
+  color: #344a60;
+  text-transform: uppercase;
   font-size: 1rem;
   border-radius: 0.25rem;
   letter-spacing: 0.1rem;
   margin-top: 1rem;
 }
 
+@media only screen and (min-width: 768px) {
+  .search-form h2 {
+    font-size: 2.5rem;
+  }
+}
 .stories .loading {
   text-align: center;
 }
@@ -282,4 +290,4 @@ input {
   to {
     transform: rotate(360deg);
   }
-}/*# sourceMappingURL=main.css.map */
+}
