@@ -31,18 +31,16 @@ export const AppProvider = ({children}) => {
     }
 
     const handleSearch = (query) => {
-        dispatch({type: "SET_LOADING"});
         dispatch({type: "HANDLE_SEARCH", payload: query})
     }
 
     const changePage = (page) => {
-        dispatch({type: "SET_LOADING"});
-        if(page >= 0 && page <=49){
+        if(page >= 0 && page <= state.nbPages-1){
             dispatch({type: "CHANGE_PAGE", payload: page})
-        }else if(page > 49){
+        }else if(page > state.nbPages-1){
             dispatch({type: "CHANGE_PAGE", payload: 0})
         }else if (page < 0){
-            dispatch({type: "CHANGE_PAGE", payload: 49})
+            dispatch({type: "CHANGE_PAGE", payload: state.nbPages-1})
         }
     }
 

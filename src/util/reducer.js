@@ -12,12 +12,11 @@ export const reducer = (state, action) => {
         }
         case "HANDLE_SEARCH": return {
             ...state,
-            loading: false,
             query: action.payload,
+            page: 0,
         }
         case "CHANGE_PAGE": return {
             ...state,
-            loading: false,
             page: action.payload,
         }
         case "REMOVE_STORY": return {
