@@ -7,7 +7,7 @@ const initialState = {
     hits: [],
     nbPages: 0,
     page:  0,
-    query: "react"
+    query: ""
 };
 
 const AppContext = React.createContext();
@@ -25,11 +25,6 @@ export const AppProvider = ({children}) => {
             console.error(error);
         }
     };
-
-    // add more dispatches
-    //remove story
-    //change page #
-    // etc
 
     const removeStory = (id) => {
         dispatch({type: "REMOVE_STORY", payload: id})

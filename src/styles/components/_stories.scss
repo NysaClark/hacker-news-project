@@ -3,23 +3,48 @@
 @use '../util/mixins' as *;
 
 .stories{
-    .loading{
-        text-align: center;
-        .spinner{
-            @include box(5.5rem);
-            @include center-auto;
-            border-radius: 50%;
-            border: 3px solid $grey-9;
-            border-top-color: $primary-4;
-            animation: spinner 0.5s linear infinite;
-            margin-bottom: .5rem;
+    width: 90vw;
+    max-width: $max-width;
+    margin: 0 auto 5rem;
+    display: grid;
+    gap: 2rem;
+
+    .story{
+        background: $white;
+        box-shadow: $light-shadow;
+        border-radius: $radius;
+        padding: 1rem 2rem;
+        .title{
+            line-height: 1.5;
+            margin-bottom: .25rem;
         }
-        @keyframes spinner {
-            to {
-                transform: rotate(360deg);
-            }
+        .info{
+            margin-bottom: .5rem;
+            color: $primary-6;
+        }
+
+        .read-link, .remove-btn{
+            font-size: .85rem;
+            text-transform: capitalize;
+        }
+
+        .read-link{
+            margin-right: .75rem;
+            color: $blue;
+        }
+
+        .remove-btn{
+            background: transparent;
+            color: $red-dark;
+            border-color: transparent;
+            cursor: pointer;
         }
     }
+}
 
-    
+@media screen and (min-width: 992px){
+    .stories{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
